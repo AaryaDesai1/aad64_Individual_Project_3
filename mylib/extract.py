@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import os
 import json
 import base64
-from pyspark.sql import SparkSession
 
 
 load_dotenv()
@@ -92,10 +91,10 @@ def extract(
     # Making the directory
     mkdirs(path=directory, headers=headers)
     # Adding the csv file
-    put_file_from_url(url, file_path, overwrite, headers=headers)
+    put_file_from_url(url, file_path, overwrite=True, headers=headers)
 
     return file_path
 
 
-if "name" == "__main__":
+if __name__ == "__main__":
     extract()

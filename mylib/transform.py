@@ -1,4 +1,4 @@
-from pyspark.sql.functions import when, col
+from pyspark.sql.functions import col
 from pyspark.ml.feature import StringIndexer, OneHotEncoder
 from pyspark.ml import Pipeline
 from load import load
