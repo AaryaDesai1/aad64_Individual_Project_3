@@ -1,0 +1,19 @@
+name: CI 
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.11
+    - name: install packages
+      run: make install
+    - name: format
+      run: make format
+    - name: lint
+      run: make lint
+    - name: test
+      run: make test
