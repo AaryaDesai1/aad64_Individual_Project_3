@@ -12,6 +12,3 @@ lint:
 
 
 all: install lint test format deploy
-
-job:
-	python pipeline.py
