@@ -1,31 +1,33 @@
-import os
-import requests
-from dotenv import load_dotenv
+import pytest
+from mylib.extract import extract
+from mylib.load import load
+from mylib.query import execute_queries
+from mylib.transform import transform_data
+from mylib.visualize import visualize
 
 
-def test_databricks_job():
-    load_dotenv()
-    access_token = os.getenv("PERSONAL_ACCESS_TOKEN")
-    job_id = os.getenv("JOB_ID")
-    server_h = os.getenv("SERVER_HOSTNAME")
+# Test for the extract function
+def test_extract():
+    # Call the extract function
+    file_path = extract()
 
-    url = f"https://{server_h}/api/2.0/jobs/run-now"
-
-    headers = {
-        "Authorization": f"Bearer {access_token}",
-        "Content-Type": "application/json",
-    }
-
-    data = {"job_id": job_id}
-
-    response = requests.post(url, headers=headers, json=data)
-
-    if response.status_code == 200:
-        print("Job run successfully triggered")
-    else:
-        print(f"Error: {response.status_code}, {response.text}")
+    # Check if the file_path is not empty (indicating successful extraction)
+    assert file_path is not None
 
 
-# Call the function to trigger the Databricks job
-if __name__ == "__main__":
-    test_databricks_job()
+# Test for the load function
+def test_load():
+    # Call the load function
+    loaded_df = load()
+
+    # Check if the loaded DataFrame is not empty
+    assert not loaded_df.isEmpty()
+
+
+# Test for the query execution
+def test_execute_queries():
+    # Call the execute_queries function
+    query_results = execute_queries()
+
+    # Check if the query_results dictionary is not empty
+    assert query_results
