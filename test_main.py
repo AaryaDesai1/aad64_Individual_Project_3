@@ -1,4 +1,3 @@
-import pytest
 from mylib.extract import extract
 from mylib.load import load
 from mylib.query import execute_queries
