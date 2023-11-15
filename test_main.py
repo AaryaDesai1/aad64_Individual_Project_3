@@ -1,31 +1,31 @@
+import os
 import requests
 from dotenv import load_dotenv
-import os
-
-# Load environment variables
-load_dotenv()
-server_h = os.getenv("SERVER_HOSTNAME")
-access_token = os.getenv("ACCESS_TOKEN")
-FILESTORE_PATH = "dbfs:/FileStore/ind_proj_3"
-url = f"https://{server_h}/api/2.0"
 
 
-# Function to check if a file path exists and auth settings still works
-def check_filestore_path(path, headers):
-    try:
-        response = requests.get(url + f"/dbfs/get-status?path={path}", headers=headers)
-        response.raise_for_status()
-        return response.json()["path"] is not None
-    except Exception as e:
-        print(f"Error checking file path: {e}")
-        return False
+def trigger_databricks_job():
+    load_dotenv()
+    access_token = os.getenv("PERSONAL_ACCESS_TOKEN")
+    job_id = os.getenv("JOB_ID")
+    server_h = os.getenv("SERVER_HOSTNAME")
+
+    url = f"https://{server_h}/api/2.0/jobs/run-now"
+
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Content-Type": "application/json",
+    }
+
+    data = {"job_id": job_id}
+
+    response = requests.post(url, headers=headers, json=data)
+
+    if response.status_code == 200:
+        print("Job run successfully triggered")
+    else:
+        print(f"Error: {response.status_code}, {response.text}")
 
 
-# Test if the specified FILESTORE_PATH exists
-def test_databricks():
-    headers = {"Authorization": f"Bearer {access_token}"}
-    assert check_filestore_path(FILESTORE_PATH, headers) is True
-
-
+# Call the function to trigger the Databricks job
 if __name__ == "__main__":
-    test_databricks()
+    trigger_databricks_job()
