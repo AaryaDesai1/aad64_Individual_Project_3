@@ -2,6 +2,8 @@
 Databricks ETL (Extract Transform Load) Pipeline
 [![CI](https://github.com/AaryaDesai1/aad64_Individual_Project_3/actions/workflows/actions.yml/badge.svg)](https://github.com/AaryaDesai1/aad64_Individual_Project_3/actions/workflows/actions.yml)
 
+Click here for [demo video](https://youtu.be/N9CFWcLH0Hk).
+
 # Summary and Objectives:
 This individual project was aimed at understanding how to use Databricks, create an ETL pipeline, and automating the trigger to initiate said pipeline. Furthermore, we needed to create a delta lake to store our data and then use PySpark to conduct data transformations. The following sections will elaborate on the components of this project. 
 
@@ -48,5 +50,5 @@ This project also has a GitHub actions workflow to ensure the CI/CD pipeline str
 
 
 # Pipeline and Automatic Trigger
-Finally, this project also has a pipeline set up to ensure that the Python files run in the same order that is specfied above. This is done with the help of a Cluster and it has been scheduled to run everyday at 2:30 PM 🕝. 
+Finally, this project also has a pipeline set up to ensure that the Python files run in the same order that is specfied above. This is done with the help of a Cluster and it has been scheduled to run everyday at 2:45 PM Eastern 🕝. 
 <p align = "center"><img width="1502" alt="Screenshot 2023-11-15 at 12 02 29 PM" src="https://github.com/AaryaDesai1/aad64_Individual_Project_3/assets/143753050/56c8b7de-ba16-49eb-b3d0-8a11249bcd43"></p>
