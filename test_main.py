@@ -10,7 +10,7 @@ FILESTORE_PATH = "dbfs:/FileStore/ind_proj_3"
 url = f"https://{server_h}/api/2.0"
 
 
-# Function to check if a file path exists and auth settings still work
+# Function to check if a file path exists and auth settings still works
 def check_filestore_path(path, headers):
     try:
         response = requests.get(url + f"/dbfs/get-status?path={path}", headers=headers)
