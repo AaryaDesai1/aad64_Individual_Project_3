@@ -3,7 +3,7 @@ import requests
 from dotenv import load_dotenv
 
 
-def trigger_databricks_job():
+def test_databricks_job():
     load_dotenv()
     access_token = os.getenv("PERSONAL_ACCESS_TOKEN")
     job_id = os.getenv("JOB_ID")
@@ -28,4 +28,4 @@ def trigger_databricks_job():
 
 # Call the function to trigger the Databricks job
 if __name__ == "__main__":
-    trigger_databricks_job()
+    test_databricks_job()
